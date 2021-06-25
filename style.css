@@ -1,0 +1,24 @@
+body{
+	background-image: url(http://cdn.tumo.org/activity/web/phase-2/using-css-style-html-elements/exercise/bg/35.png) ;
+}
+
+.h1{
+	     color:lightblue;
+	    
+
+
+}
+.vernagir{
+	text-align: center;
+	font-family: 'Big Shoulders Stencil Display', cursive;
+	font-size: 70px;
+}
+
+.tools{
+	margin: 20px;
+}
+.btn{
+	border: 2px solid lightblue;
+	border-radius: 3px;
+	background: blue;
+}
