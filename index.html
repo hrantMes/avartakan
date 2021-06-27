@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Game of Farm</title>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
     <script src="script.js"></script>
@@ -22,23 +22,28 @@
 
 </head>
 <body>
-
-
+<!-- 
+ <div id="preloder">
+        <div class="loader"></div>
+    </div> -->
     <div class="tools">
         <h1 class="vernagir">GAME of FARM</h1>
-        <h1 class="h1">Events</h1>
+        
         
             <div class="btn-group-vertical">
 
-                 <button class="btn" onclick= "kill()"  ><i class="fas fa-radiation-alt"></i> Kil them All</button>
+                 <button class="btn" id="guyn"onclick= "kill()"  ><i class="fas fa-skull-crossbones"></i> Kil them All</button>
 
             
-                <button class="btn" onclick= "addGrass()"  ><i class="fas fa-seedling"></i> Add grass</button>
+                <button class="btn" id="guyn"onclick= "addGrass()"  ><i class="fas fa-seedling"></i> Add grass</button>
 
             
-                <button class="btn" onclick= "addGrassEater()"  ><i class="fas fa-otter "></i>Add grass eater</button>
+                <button class="btn"id="guyn" onclick= "addGrassEater()"  ><i class="fas fa-otter "></i>Add grass eater</button>
             
-                <button class="btn" onclick= "addGrassTigr()"  ><i class="fas fa-dragon"></i>Add Dragons</button>
+                <button class="btn" id="guyn"onclick= "addGrassTigr()"  ><i class="fas fa-dragon"></i>Add Dragons</button>
+
+                <button class="btn" id="guyn"onclick= "addGrassWater()"  ><i class="fas fa-bolt "></i>Add Bolt</button>
+
 
                 
            <div>

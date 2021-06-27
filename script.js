@@ -24,11 +24,17 @@ function nkarel(matrix) {
             }else if (weath == "spring") {
                 fill("#4dffa6");
             }
-        }else if (obj == 2) {
+        }
+        else if (obj == 2) {
                 fill("yellow");
-                 }else if (obj == 3) {
+        }
+        else if (obj == 3) {
                 fill("blue")
-            }else if (obj == 0){
+        }
+          else if (obj == 4) {
+                fill("black")
+        }
+        else if (obj == 0){
                 fill("grey")
             }
             rect(x * side, y * side, side, side);
@@ -51,4 +57,7 @@ function addGrassEater() {
 }
 function addGrassTigr() {
     socket.emit("add grassTigr")
+}
+function addGrassWater() {
+    socket.emit("add grassWater")
 }

@@ -14,6 +14,7 @@ server.listen(3000);
 grassArr = [];
 grassEaterArr = [];
 grassTigrArr = [];
+grassWaterArr = [];
 matrix = [];
 
 var n = 50;
@@ -21,7 +22,8 @@ var n = 50;
 weath = "winter";
 Grass = require("./Grass")
 GrassEater = require("./GrassEater")
-GrassTigr = require("./GrassEater")
+GrassTigr = require("./GrassTigr")
+GrassWater = require("./GrassWater")
 
 function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -54,6 +56,10 @@ function createObject() {
                 matrix[y][x] = 3
                 grassTigrArr.push(new GrassTigr(x, y, 3))
             }
+            else if (matrix[y][x] == 4) {
+                matrix[y][x] = 4
+                grassWaterArr.push(new GrassWater(x, y, 4))
+            }
         }
     }
     io.sockets.emit('send matrix', matrix)
@@ -69,6 +75,9 @@ function game() {
     for (var i in grassTigrArr) {
         grassTigrArr[i].eat();
     }
+     for (var i in grassWaterArr) {
+        grassWaterArr[i].eat();
+    }
     io.sockets.emit("send matrix", matrix);
 }
 
@@ -79,6 +88,7 @@ function kill() {
     grassArr = [];
     grassEaterArr = [];
     grassTigrArr = [];
+     grassWaterArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;
@@ -123,6 +133,18 @@ function addGrassTigr() {
     }
     io.sockets.emit("send matrix", matrix);
 }
+function addGrassWater() {
+    for (var i = 0; i < 7; i++) {   
+    var x = Math.floor(Math.random() * matrix[0].length)
+    var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            grassWaterArr.push(new GrassWater(x, y, 4))
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+
 
 
 ///new
@@ -155,6 +177,7 @@ io.on('connection', function (socket) {
     socket.on("add grass", addGrass);
     socket.on("add grassEater", addGrassEater);
     socket.on("add grassTigr", addGrassTigr);
+    socket.on("add grassWater", addGrassWater);
 
 });
 
@@ -164,7 +187,8 @@ var statistics = {};
 setInterval(function() {
     statistics.grass = grassArr.length;
     statistics.grassEater = grassEaterArr.length;
-    statistics.grassTigr = grassTigrArr.length;
+       statistics.grassTigr = grassTigrArr.length;
+    statistics.grassWater = grassWaterArr.length;
     fs.writeFile("statistics.json", JSON.stringify(statistics), function(){
         console.log("send")
     })
